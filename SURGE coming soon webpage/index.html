@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SURGE Grooming &bull; Launching Soon</title>
+  <meta name="description" content="The New Standard in Men's Grooming. Uncompromised hold. Launching soon.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <!-- Core Libraries CDNs (Lenis, GSAP, ScrollTrigger, Anime.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js" defer></script>
+
+  <!-- LCP Image Preload Hint -->
+  <link rel="preload" as="image" href="assets/images/logo.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=114">
+</head>
+<body class="dark-theme">
+
+  <!-- 1. Luxury Entrance Splash Animation (E-Commerce Style Overlay) -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-ambient-glow"></div>
+    <div class="splash-content">
+      <img src="assets/images/logo.webp" alt="SURGE Logo" class="splash-logo" id="splash-logo" fetchpriority="high" decoding="sync">
+      <div class="splash-subtitle" id="splash-subtitle">MEN'S GROOMING</div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="cs-header">
+    <div class="cs-header-container">
+      <div class="cs-brand-wrap">
+        <img src="assets/images/logo.webp" alt="SURGE Grooming" class="cs-logo" fetchpriority="high" decoding="sync">
+      </div>
+      <div class="cs-header-actions">
+        <a href="#vip-signup" class="cs-vip-btn">Get Waitlist Access</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero Intro with 2D Magnetic Grid Dot Image Reveal -->
+  <section class="cs-hero-intro" id="home-hero-container">
+    <canvas id="hero-liquid-canvas"></canvas>
+    <div class="cs-hero-intro-container reveal-item">
+      <span class="cs-tagline font-devanagari">तेजस् &bull; शौर्य &bull; ओजस्</span>
+      <h1 class="cs-hero-title">THE NEW STANDARD IN MEN'S GROOMING</h1>
+      <p class="cs-hero-subtitle">Engineered for all hair textures &amp; climates. Zero compromise on hold.</p>
+      <div class="cs-hero-ctas">
+        <a href="#vip-signup" class="cs-btn-primary">Claim Waitlist Discount &rarr;</a>
+        <a href="#showcase" class="cs-btn-secondary">Explore 7-Product Showcase</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infinite Marquee Ticker Bar -->
+  <div class="cs-hero-ticker">
+    <div class="cs-ticker-track">
+      <span>SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull;</span>
+      <span>SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull; SURGE.COMING SOON &bull;</span>
+    </div>
+  </div>
+
+  <!-- Interactive 360° Story Scroll Section (Tangled String & Rotating Bottle) -->
+  <section class="cs-scroll-story-section" id="story-section">
+    <div class="cs-story-sticky-wrap">
+      
+      <!-- Center 360° Rotating Bottle Canvas -->
+      <div class="cs-story-canvas-container">
+        <canvas id="story-bottle-canvas"></canvas>
+      </div>
+
+      <!-- Tangled SVG String Path -->
+      <svg class="cs-story-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="string-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="60%" stop-color="#eaeaea" />
+            <stop offset="100%" stop-color="#d4af37" />
+          </linearGradient>
+        </defs>
+        <!-- A continuous smooth path looping/tangling around center (500,500) -->
+        <path class="cs-story-string-path" d="M 500,0 C 500,150 250,200 250,300 C 250,400 750,380 750,500 C 750,620 200,600 200,700 C 200,800 500,850 500,1000" />
+      </svg>
+
+      <!-- Scroll Pointers (Overlay) -->
+      <div class="cs-story-content-overlay">
+        <!-- Opening Line -->
+        <div class="cs-story-pointer opening-line active-pointer" id="pointer-opening">
+          <div class="pointer-aura-glow"></div>
+          <h2>“Your outfit’s not the problem.”</h2>
+        </div>
+
+        <!-- Pointer 01 -->
+        <div class="cs-story-pointer text-left" id="pointer-1">
+          <div class="pointer-aura-glow"></div>
+          <span class="pointer-tag">01 &bull; THE REALITY</span>
+          <h2>“It’s the hair.”</h2>
+        </div>
+
+        <!-- Pointer 02 -->
+        <div class="cs-story-pointer text-right" id="pointer-2">
+          <div class="pointer-aura-glow"></div>
+          <span class="pointer-tag">02 &bull; THE STANDARD</span>
+          <h2>“Nobody’s checking your clothes if your hair’s a mess.”</h2>
+        </div>
+
+        <!-- Pointer 03 -->
+        <div class="cs-story-pointer text-left" id="pointer-3">
+          <div class="pointer-aura-glow"></div>
+          <span class="pointer-tag">03 &bull; THE FORMULATION</span>
+          <h2>“Seven products. Every hair type. Zero excuses.”</h2>
+          <p class="pointer-subtitle">One stop for men's styling</p>
+        </div>
+
+        <!-- Pointer 04 -->
+        <div class="cs-story-pointer text-right" id="pointer-4">
+          <div class="pointer-aura-glow"></div>
+          <span class="pointer-tag">04 &bull; THE IDENTITY</span>
+          <h2>“This is SURGE.”</h2>
+        </div>
+
+        <!-- Closing Line -->
+        <div class="cs-story-pointer closing-line" id="pointer-closing">
+          <div class="pointer-aura-glow"></div>
+          <h2>“Dropping soon. Remember the name.”</h2>
+        </div>
+
+        <!-- Register Now Waitlist Form -->
+        <div class="cs-story-pointer register-form-pointer" id="pointer-register">
+          <div class="pointer-aura-glow"></div>
+          <h2>Register Now</h2>
+          <p class="register-sub">Enter your email for private early access &amp; pricing.</p>
+          <form class="story-register-form" id="story-waitlist-form">
+            <input type="email" placeholder="Enter your email address" required class="story-input-field" id="story-email-input">
+            <button type="submit" class="story-submit-btn">Get Waitlist Access &rarr;</button>
+          </form>
+          <div class="form-feedback-msg" id="story-form-feedback"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pinned 360° Bottle Showcase Section (Split layout: scrolling text on left, sticky bottle on right) -->
+  <section class="cs-bottle-showcase-section" id="showcase">
+    <!-- Left Side: Scrolling Product Fact Cards -->
+    <div class="cs-facts-scroll-col">
+      
+      <!-- Card 1 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-1">
+        <span class="cs-fact-num">01 / 07 &bull; SEA SALT SPRAY</span>
+        <h2>Flat, limp hair with zero texture.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> Real sea salt for grip. Aloe and glycerin so it doesn't dry your hair out like the cheap stuff does.</p>
+        <p class="fact-result"><strong>What it does:</strong> Undone, beachy texture. Second-day hair, on day one.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-2">
+        <span class="cs-fact-num">02 / 07 &bull; TEXTURE POWDER</span>
+        <h2>Flat roots, no grip, hair that won't hold a style.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> A starch that soaks up oil at the root. No white cast, no chalky residue.</p>
+        <p class="fact-result"><strong>What it does:</strong> Instant root lift. Matte finish. Grip without the crunch.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-3">
+        <span class="cs-fact-num">03 / 07 &bull; POMADE</span>
+        <h2>Needing real hold without looking like you dumped oil on your head.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> Natural waxes. Not the greasy stuff from your dad's bathroom cabinet.</p>
+        <p class="fact-result"><strong>What it does:</strong> Slicked or texturized — your call. Hold that lasts all day, shine that doesn't look fake.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-4">
+        <span class="cs-fact-num">04 / 07 &bull; CLAY</span>
+        <h2>Frizz and flyaways, wanting a strong hold with zero shine.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> Clay that pulls oil out as the day goes on, keeping you matte instead of greasy by 3pm.</p>
+        <p class="fact-result"><strong>What it does:</strong> Strong hold. Zero shine. Texture that holds up all day.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-5">
+        <span class="cs-fact-num">05 / 07 &bull; HAIR STYLING MOUSSE</span>
+        <h2>Fine or thin hair that goes flat by noon.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> A light foam that won't leave your hair stiff, sticky, or flaky.</p>
+        <p class="fact-result"><strong>What it does:</strong> Volume that actually moves. Not stiff, not crunchy, not fake.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-6">
+        <span class="cs-fact-num">06 / 07 &bull; LEAVE-IN CONDITIONER</span>
+        <h2>Dry, frizzy, hard-to-manage hair between washes.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> A moisture and protein mix. No rinsing, no waiting around.</p>
+        <p class="fact-result"><strong>What it does:</strong> Soft, easy, lightweight hair.</p>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="cs-fact-card-scroll" id="scroll-fact-7">
+        <span class="cs-fact-num">07 / 07 &bull; HAIR OIL</span>
+        <h2>Dryness, split ends, dull-looking hair.</h2>
+        <p class="fact-sub"><strong>What's in it:</strong> A light oil blend that soaks in fast — no greasy residue.</p>
+        <p class="fact-result"><strong>What it does:</strong> Shine and control, without the slicked-back grease look.</p>
+      </div>
+
+    </div>
+
+    <!-- Right Side: Sticky Canvas Window -->
+    <div class="cs-canvas-sticky-wrap">
+      
+      <!-- Interactive Constellation & Card Shuffler Overlay -->
+      <div class="constellation-overlay">
+        <!-- SVG lines drawing concentric circles and active connection lines -->
+        <svg class="constellation-svg" viewBox="0 0 400 400">
+          <circle cx="200" cy="200" r="140" class="constellation-orbit-line" />
+          <circle cx="200" cy="200" r="88" class="constellation-inner-orbit" />
+          <!-- 7 connecting lines pointing from center to nodes -->
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-1" />
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-2" />
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-3" />
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-4" />
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-5" />
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-6" />
+          <line x1="200" y1="200" x2="200" y2="200" class="connect-line" id="connect-line-7" />
+        </svg>
+
+        <!-- 7 clickable circular product nodes that rotate and shuffle -->
+        <div class="constellation-nodes-container" id="constellation-nodes">
+          <div class="constellation-node active" data-index="1" style="--angle: 0deg;">
+            <img src="assets/images/sea_salt_spray.webp" alt="Sea Salt Spray" loading="lazy" decoding="async">
+            <span class="node-tooltip">Sea Salt Spray</span>
+          </div>
+          <div class="constellation-node" data-index="2" style="--angle: 51.4deg;">
+            <img src="assets/images/texture_powder.webp" alt="Texture Powder" loading="lazy" decoding="async">
+            <span class="node-tooltip">Texture Powder</span>
+          </div>
+          <div class="constellation-node" data-index="3" style="--angle: 102.8deg;">
+            <img src="assets/images/pomade.webp" alt="Pomade" loading="lazy" decoding="async">
+            <span class="node-tooltip">Pomade</span>
+          </div>
+          <div class="constellation-node" data-index="4" style="--angle: 154.2deg;">
+            <img src="assets/images/hair_clay.webp" alt="Clay" loading="lazy" decoding="async">
+            <span class="node-tooltip">Clay</span>
+          </div>
+          <div class="constellation-node" data-index="5" style="--angle: 205.6deg;">
+            <img src="assets/images/styling_mousse.webp" alt="Mousse" loading="lazy" decoding="async">
+            <span class="node-tooltip">Styling Mousse</span>
+          </div>
+          <div class="constellation-node" data-index="6" style="--angle: 257deg;">
+            <img src="assets/images/leave_in_conditioner.webp" alt="Leave-in" loading="lazy" decoding="async">
+            <span class="node-tooltip">Leave-in Conditioner</span>
+          </div>
+          <div class="constellation-node" data-index="7" style="--angle: 308.6deg;">
+            <img src="assets/images/hairstyling_oil.webp" alt="Hair Oil" loading="lazy" decoding="async">
+            <span class="node-tooltip">Hair Oil</span>
+          </div>
+        </div>
+
+        <!-- Central active product image display hub with integrated SVG scroll progress ring -->
+        <div class="constellation-center-hub">
+          <svg class="hub-progress-svg" viewBox="0 0 100 100">
+            <circle class="hub-progress-bg" cx="50" cy="50" r="47" />
+            <circle class="hub-progress-ring" id="hub-progress-ring" cx="50" cy="50" r="47" />
+          </svg>
+          <img id="constellation-center-img" src="assets/images/sea_salt_spray.webp" alt="Active Product" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Standalone Founder's Story Section -->
+  <section class="cs-founder-section" id="founder">
+    <div class="cs-section-container reveal-item">
+      <div class="cs-founder-card">
+        <div class="cs-founder-quote-mark">&ldquo;</div>
+        <span class="cs-subheading">FOUNDER'S NOTE &bull; RAJKOT, INDIA</span>
+        <h2 class="cs-founder-title font-devanagari">I got tired of choosing.</h2>
+        <p class="cs-founder-text">
+          "Products that worked but smelled like a chemistry lab. Products that smelled amazing and did nothing for my hair. I got tired of picking one or the other.
+        </p>
+        <p class="cs-founder-text">
+          SURGE is what happens when you refuse to compromise. Real hold, real texture, real results — without the stuff that wrecks your hair to get there."
+        </p>
+        <div class="cs-founder-sig">
+          <strong>PRIYAM</strong>
+          <span>Founder, SURGE Grooming</span>
+        </div>
+        <div class="cs-founder-cta-wrap">
+          <a href="#waitlist" class="cs-vip-btn cs-founder-btn">Get VIP Access &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- "The SURGE Chronicles" 4-Chapter Story (Scrambled Desk Card Pile Layout) -->
+  <section class="cs-story-section" id="story">
+    <div class="cs-section-container">
+      <div class="cs-section-header reveal-item">
+        <span class="cs-subheading">OUR STORY &amp; MISSION</span>
+        <h2 class="cs-section-title font-devanagari">THE SURGE CHRONICLES</h2>
+        <div class="cs-callout-text">तेजस् &bull; शौर्य &bull; ओजस्</div>
+      </div>
+
+      <!-- Scrambled Horizontal Card Pile Container -->
+      <div class="cs-scrambled-pile-container reveal-item">
+        
+        <!-- Card 1 -->
+        <div class="cs-story-card scrambled-card story-pattern-a" id="scrambled-card-1" data-index="1">
+          <span class="cs-chapter">CHAPTER 01</span>
+          <h3>THE PROBLEM</h3>
+          <p>Every hair product on the shelf either worked and smelled like chemicals, or smelled great and did nothing. Nobody made one that actually did both.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cs-story-card scrambled-card story-pattern-b" id="scrambled-card-2" data-index="2">
+          <span class="cs-chapter">CHAPTER 02</span>
+          <h3>THE SEARCH</h3>
+          <p>So I started looking for something that didn't exist yet. Products built for how your hair actually behaves — not a copy-paste of a formula made for someone else's hair, someone else's water.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="cs-story-card scrambled-card story-pattern-c" id="scrambled-card-3" data-index="3">
+          <span class="cs-chapter">CHAPTER 03</span>
+          <h3>THE BUILD</h3>
+          <p>Months of testing. Throwing out what didn't work. Keeping what did. No filler, no "just because it sells."</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="cs-story-card scrambled-card story-pattern-a" id="scrambled-card-4" data-index="4">
+          <span class="cs-chapter">CHAPTER 04</span>
+          <h3>RIGHT NOW</h3>
+          <p>This is where you come in. SURGE launches in 2026 — and the people on this list get it first.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Routine Finder Banner from E-Commerce Page -->
+  <section class="cs-quiz-banner-section" id="routine-finder">
+    <div class="cs-section-container reveal-item">
+      <div class="quiz-banner">
+        <div class="quiz-banner-content">
+          <span class="quiz-banner-tag">Routine Finder</span>
+          <h2 class="quiz-banner-title font-devanagari">Unsure what products you need?</h2>
+          <p class="quiz-banner-text">Take our 60-second grooming quiz to find your recommended daily hair routine.</p>
+        </div>
+        <button class="cs-btn-primary quiz-launch-btn" id="quiz-start-btn">Get Your Routine</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Product Gallery with Smooth Blur Progressive Reveal -->
+  <section class="cs-products-section" id="products">
+    <div class="cs-section-container">
+      <div class="cs-section-header reveal-item">
+        <span class="cs-subheading">INAUGURAL LINEUP</span>
+        <h2 class="cs-section-title font-devanagari">ALL PRODUCTS</h2>
+        <p class="cs-section-subtitle">Hover over product cards to reveal unblurred renders &amp; lock drop notifications.</p>
+      </div>
+
+      <div class="cs-product-grid" id="product-grid">
+        <!-- Rendered dynamically via JS with 7 products -->
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Registration Section (15% OFF Waitlist) -->
+  <section class="cs-vip-section" id="vip-signup">
+    <div class="cs-section-container reveal-item">
+      <div class="cs-vip-card">
+        <div class="cs-vip-badge">VIP WAITLIST</div>
+        <h2 class="cs-vip-title">Get in before everyone else.</h2>
+        
+        <form id="vip-form" class="cs-vip-form">
+          <div class="cs-input-group">
+            <input type="email" id="vip-email" placeholder="Enter your email" required>
+            <button type="submit" class="cs-btn-primary">Get early access</button>
+          </div>
+          <div class="cs-perks-row" style="max-width: 480px; margin-top: 20px;">
+            <span>&bull; First 100 members get <strong>20% OFF</strong> at launch</span>
+            <span>&bull; All other members get <strong>15% OFF</strong> at launch</span>
+          </div>
+        </form>
+
+        <!-- Success Message Block -->
+        <div id="vip-success-msg" class="cs-success-card" style="display:none;">
+          <div class="cs-success-icon">&check;</div>
+          <h3>You're on the VIP Launch List!</h3>
+          <p>We've reserved your waitlist discount. We will notify you as soon as we drop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand Mission & Socials -->
+        <div class="footer-col brand-col">
+          <a href="#" class="footer-logo-link">
+            <img src="assets/images/logo.jpg?v=18" alt="SURGE Logo" class="footer-brand-logo">
+          </a>
+          <div class="footer-tagline-devanagari">तेजस् &bull; शौर्य &bull; ओजस्</div>
+          <p class="footer-about">High-end, performance-driven grooming products designed for men who demand better. Uncompromising hold, premium formulations.</p>
+          <div class="footer-socials">
+            <a href="https://instagram.com" class="social-icon-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://twitter.com" class="social-icon-link" target="_blank" rel="noopener" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="https://youtube.com" class="social-icon-link" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-title">Showcase</h4>
+          <a href="#showcase" class="footer-link">The 7 Products</a>
+          <a href="#founder" class="footer-link">Our Story</a>
+          <a href="#story" class="footer-link">SURGE Chronicles</a>
+          <a href="#vip-signup" class="footer-link">VIP Waitlist</a>
+        </div>
+
+        <!-- Column 3: Care & Support -->
+        <div class="footer-col">
+          <h4 class="footer-title">Care &amp; Support</h4>
+          <div class="footer-contact-block">
+            <p class="contact-block-label">Customer Care</p>
+            <a href="mailto:care@surgegrooming.com" class="contact-block-value">care@surgegrooming.com</a>
+            <a href="tel:+919999988888" class="contact-block-value">+91 99999 88888</a>
+            <a href="https://wa.me/919999988888" class="contact-block-value" target="_blank" rel="noopener">WhatsApp Support</a>
+          </div>
+        </div>
+
+        <!-- Column 4: Promo Routine Card -->
+        <div class="footer-col promo-col">
+          <div class="footer-promo-card">
+            <span class="promo-card-tag">Routine Finder</span>
+            <h5 class="promo-card-title">FIND YOUR LOOK</h5>
+            <p class="promo-card-text">Take our 60-second grooming quiz to build a custom-tailored active style regimen.</p>
+            <button class="cs-btn-primary promo-card-btn" id="footer-quiz-start-btn">Get Your Routine</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 SURGE Grooming. All rights reserved.</p>
+      </div>
+
+      <!-- Massive brand footer logo (similar to based.com) -->
+      <div class="footer-massive-logo-container">
+        <div class="footer-massive-logo">SURGE</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 6. Get Your Routine Quiz Dialog Modal from E-Commerce page -->
+  <div id="quiz-modal" class="quiz-modal">
+    <div class="quiz-modal-overlay" id="quiz-modal-overlay"></div>
+    <div class="quiz-modal-content">
+      <button class="quiz-close-btn" id="quiz-close-btn" aria-label="Close Quiz">&times;</button>
+      
+      <!-- Quiz Steps Wrapper -->
+      <div class="quiz-container">
+        <!-- Step 1: Hair Type -->
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-progress"><span class="progress-fill" style="width: 25%;"></span></div>
+          <span class="quiz-step-num">Step 1 of 4</span>
+          <h3 class="quiz-step-title">What is your hair type?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option" data-ans="1A-1C">
+              <span class="option-title">Straight</span>
+              <span class="option-sub">Type 1A / 1B / 1C</span>
+            </button>
+            <button class="quiz-option" data-ans="2A-2C">
+              <span class="option-title">Wavy</span>
+              <span class="option-sub">Type 2A / 2B / 2C</span>
+            </button>
+            <button class="quiz-option" data-ans="3A-3C">
+              <span class="option-title">Curly</span>
+              <span class="option-sub">Type 3A / 3B / 3C</span>
+            </button>
+            <button class="quiz-option" data-ans="4A-4C">
+              <span class="option-title">Coily / Kinky</span>
+              <span class="option-sub">Type 4A / 4B / 4C</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Styling Style -->
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-progress"><span class="progress-fill" style="width: 50%;"></span></div>
+          <span class="quiz-step-num">Step 2 of 4</span>
+          <h3 class="quiz-step-title">How would you like to style your hair?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option" data-ans="matte-volume">
+              <span class="option-title">High Volume & Matte</span>
+              <span class="option-sub">Full matte height, zero shine</span>
+            </button>
+            <button class="quiz-option" data-ans="sleek-shine">
+              <span class="option-title">Neat, Sleek & Defined</span>
+              <span class="option-sub">Classic sharp look with shine</span>
+            </button>
+            <button class="quiz-option" data-ans="beachy-grip">
+              <span class="option-title">Natural Wave & Grip</span>
+              <span class="option-sub">Beachy, casual texturized look</span>
+            </button>
+            <button class="quiz-option" data-ans="defined-curls">
+              <span class="option-title">Soft, Hydrated Curls</span>
+              <span class="option-sub">Frizz control, natural bounce</span>
+            </button>
+            <button class="quiz-option" data-ans="flexible-volume">
+              <span class="option-title">Lightweight Fullness</span>
+              <span class="option-sub">Flexible, touchable styling hold</span>
+            </button>
+          </div>
+          <button class="quiz-back-btn">&larr; Back</button>
+        </div>
+
+        <!-- Step 3: Hair Length -->
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-progress"><span class="progress-fill" style="width: 75%;"></span></div>
+          <span class="quiz-step-num">Step 3 of 4</span>
+          <h3 class="quiz-step-title">What is your hair length?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option" data-ans="short">
+              <span class="option-title">Short / Cropped</span>
+              <span class="option-sub">Under 2 inches</span>
+            </button>
+            <button class="quiz-option" data-ans="medium">
+              <span class="option-title">Medium / Styled</span>
+              <span class="option-sub">2 to 5 inches</span>
+            </button>
+            <button class="quiz-option" data-ans="long">
+              <span class="option-title">Long</span>
+              <span class="option-sub">5+ inches</span>
+            </button>
+          </div>
+          <button class="quiz-back-btn">&larr; Back</button>
+        </div>
+
+        <!-- Step 4: Concern -->
+        <div class="quiz-step" data-step="4">
+          <div class="quiz-progress"><span class="progress-fill" style="width: 100%;"></span></div>
+          <span class="quiz-step-num">Step 4 of 4</span>
+          <h3 class="quiz-step-title">What is your primary scalp/hair concern?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option" data-ans="dry-frizz">
+              <span class="option-title">Dryness & Frizz</span>
+              <span class="option-sub">Coarse, brittle, or unruly strands</span>
+            </button>
+            <button class="quiz-option" data-ans="flat-fine">
+              <span class="option-title">Flat & Fine Hair</span>
+              <span class="option-sub">Strands lay flat, lacks strength</span>
+            </button>
+            <button class="quiz-option" data-ans="oil-greasy">
+              <span class="option-title">Excess Oil / Greasiness</span>
+              <span class="option-sub">Heavy scalp buildup, loses shape fast</span>
+            </button>
+          </div>
+          <button class="quiz-back-btn">&larr; Back</button>
+        </div>
+
+        <!-- Results Step -->
+        <div class="quiz-step" id="quiz-step-result">
+          <div class="quiz-success-icon">&#10004;</div>
+          <h3 class="quiz-result-title">Your SURGE Routine</h3>
+          <p class="quiz-result-subtitle" id="quiz-routine-name">The Volumizing Matte Duo</p>
+          
+          <div class="quiz-recommended-products" id="quiz-recommended-products-container">
+            <!-- Render recommendations dynamically from app.js -->
+          </div>
+
+          <p class="quiz-recommendation-explanation" id="quiz-recommendation-explanation">
+            Based on your straight hair, short length, and request for matte texture, we recommend styling with a combination of our Sea Salt Spray and Texture Powder to maximize root lift.
+          </p>
+
+          <button class="cs-btn-primary apply-routine-btn" id="quiz-apply-routine-btn">Reserve Routine on Waitlist</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Notification Modal -->
+  <div id="notify-modal" class="cs-modal-overlay">
+    <div class="cs-modal-card">
+      <button onclick="closeNotifyModal()" class="cs-modal-close">&times;</button>
+      <h3 id="modal-product-title">SURGE Product</h3>
+      <p>Enter your email to receive an instant alert when this item drops on Launch Day.</p>
+      <form id="product-notify-form">
+        <input type="email" id="modal-email" placeholder="Your email address" required>
+        <button type="submit" class="cs-btn-primary">Remind Me on Drop</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js?v=114" defer></script>
+</body>
+</html>

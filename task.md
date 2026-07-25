@@ -1,0 +1,15 @@
+- `[x]` 1. Create config.js containing modular product database and contact details
+- `[x]` 2. Replace Chronicles section story content with the 6 new chapters in index.html and update dots
+- `[x]` 3. Add looping trust phrases marquee to index.html and style it
+- `[x]` 4. Redesign "Key Ingredients" section layout & remove repeating watermark, add dynamic inline SVGs
+- `[x]` 5. Redesign "You May Also Like" product image containers, hover scale zoom, black CTA buttons, scroll reveal
+- `[x]` 6. Add Contact section to left drawer and redesigned footer
+- `[x]` 7. Update all bundle discount copies and logic (5% and 10%)
+- `[x]` 8. Add profile silhouette icon next to Cart button, link to Auth and Dashboard router
+- `[x]` 9. Rebuild Reviews section as review cards with "Write a review" form, local storage persistence
+- `[x]` 10. Implement "Style, Decoded" educational hair science section on homepage and link in navigation
+- `[x]` 11. Add styling tips to all product info pages
+- `[x]` 12. Move shampoo & conditioner to "Coming Soon" category section and navigation link
+- `[x]` 13. Redesign footer structure with mission statement, link columns, promo card, faded wordmark, light logo
+- `[x]` 14. Fix Help/Support flow (Other option, auto-skip Details, limit desc, black logo theme)
+- `[x]` 15. Verify all scripts using check_braces.py and sync directories

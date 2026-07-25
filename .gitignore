@@ -1,0 +1,12 @@
+# Exclude Webstore / Full Store files and directories
+surge website/
+/app.js
+/index.html
+/style.css
+/config.js
+/assets/
+
+# OS & Environment files
+.DS_Store
+*.log
+node_modules/
