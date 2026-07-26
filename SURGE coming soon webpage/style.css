@@ -1699,28 +1699,58 @@ body.light-theme .cs-input-group input { background: #ffffff; }
   .cs-hero-subtitle { font-size: 0.82rem !important; line-height: 1.45 !important; color: #d0d0d0 !important; margin-bottom: 16px !important; }
   .cs-hero-ctas { display: flex !important; flex-direction: column !important; gap: 8px !important; width: 100% !important; }
   .cs-btn-primary, .cs-btn-secondary { width: 100% !important; padding: 10px 14px !important; font-size: 0.8rem !important; text-align: center !important; box-sizing: border-box !important; }
+
+  /* Fixed Single-Line Marquee Ticker */
+  .cs-hero-ticker {
+    padding: 10px 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+  .cs-ticker-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+  .cs-ticker-track span {
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+
+  /* Clean Mobile Constellation Layout */
   .cs-bottle-showcase-section {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     position: relative !important;
     width: 100% !important;
     height: auto !important;
     min-height: auto !important;
-    padding: 40px 0 !important;
+    padding: 40px 16px !important;
     margin: 0 !important;
     overflow: visible !important;
   }
+  .cs-canvas-sticky-wrap {
+    width: 100% !important;
+    height: 280px !important;
+    position: relative !important;
+    top: 0 !important;
+    order: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .constellation-center-hub {
+    width: 180px !important;
+    height: 180px !important;
+  }
   .cs-facts-scroll-col {
-    width: 60% !important;
+    width: 100% !important;
     height: auto !important;
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 60px !important;
-    padding-left: 0 !important;
-    padding-right: 16px !important;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    gap: 40px !important;
+    padding: 20px 0 !important;
     order: 2 !important;
   }
   .cs-fact-card-scroll {
@@ -1728,18 +1758,20 @@ body.light-theme .cs-input-group input { background: #ffffff; }
     top: auto !important;
     left: auto !important;
     width: 100% !important;
+    max-width: 100% !important;
     transform: none !important;
     margin: 0 !important;
-    opacity: 0.35;
+    opacity: 0.4;
     transition: opacity 0.3s ease, transform 0.3s ease;
     display: flex !important;
     flex-direction: column !important;
     pointer-events: auto !important;
     min-height: auto !important;
+    padding: 16px 0 !important;
   }
   .cs-fact-card-scroll.active-card {
     opacity: 1 !important;
-    transform: scale(1.02) !important;
+    transform: scale(1.01) !important;
   }
 /* Integrated SVG Circular Progress Ring */
 .hub-progress-svg {
