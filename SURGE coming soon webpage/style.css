@@ -293,6 +293,8 @@ body.dark-theme .cs-logo {
   width: 100%;
   height: 100%;
   z-index: 1;
+.cs-hero-mobile-img {
+  display: none;
 }
 
 .cs-hero-intro-container {
@@ -1654,23 +1656,49 @@ body.light-theme .cs-input-group input { background: #ffffff; }
   
   /* Mobile Hero Static Background & Black Glass Overlay */
   #hero-liquid-canvas { display: none !important; }
+  .cs-hero-mobile-img {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center bottom !important;
+    z-index: 1 !important;
+    opacity: 0.85 !important;
+  }
   .cs-hero-intro {
-    background: url('assets/images/hero_mobile_lineup.webp') center center / cover no-repeat !important;
-    padding: 120px 20px 60px 20px !important;
+    background: #000000 !important;
+    padding: 85px 12px 35px 12px !important;
     min-height: 80vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
   }
   .cs-hero-intro-container {
-    background: rgba(0, 0, 0, 0.75) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border-radius: 20px !important;
-    padding: 32px 20px !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8) !important;
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 320px !important;
+    width: calc(100% - 20px) !important;
+    margin: 0 auto !important;
+    background: rgba(10, 10, 10, 0.68) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-radius: 16px !important;
+    padding: 20px 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85) !important;
+    text-align: center !important;
     pointer-events: auto !important;
   }
-  .cs-hero-title { font-size: 2.1rem; font-weight: 900; line-height: 1.2; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); }
-  .cs-hero-subtitle { font-size: 1.05rem; color: #e0e0e0; }
+  .cs-tagline { font-size: 0.85rem !important; letter-spacing: 0.15em !important; margin-bottom: 8px !important; }
+  .cs-hero-title { font-size: 1.45rem !important; font-weight: 900 !important; line-height: 1.25 !important; letter-spacing: -0.01em !important; margin-bottom: 10px !important; }
+  .cs-hero-subtitle { font-size: 0.82rem !important; line-height: 1.45 !important; color: #d0d0d0 !important; margin-bottom: 16px !important; }
+  .cs-hero-ctas { display: flex !important; flex-direction: column !important; gap: 8px !important; width: 100% !important; }
+  .cs-btn-primary, .cs-btn-secondary { width: 100% !important; padding: 10px 14px !important; font-size: 0.8rem !important; text-align: center !important; box-sizing: border-box !important; }
   .cs-bottle-showcase-section {
     display: flex !important;
     flex-direction: row !important;
