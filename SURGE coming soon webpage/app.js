@@ -1027,7 +1027,7 @@ function setupStoryBottleSection() {
 
   const isMobile = window.innerWidth < 768;
   const frameStep = 1; // Preload all frames on all devices
-  const totalFrames = 240;
+  const totalFrames = 24;
   const loadedFrames = [];
   let loadedCount = 0;
   let lastDrawnFrameIndex = 0; // Cache to prevent canvas flicker
@@ -1038,6 +1038,9 @@ function setupStoryBottleSection() {
   // IntersectionObserver to pause rendering when story bottle section is not visible in viewport
   const storyIO = new IntersectionObserver((entries) => {
     isStoryVisible = entries[0].isIntersecting;
+    if (isStoryVisible) {
+      drawFrame(lastDrawnFrameIndex);
+    }
   }, { threshold: 0.05 });
   storyIO.observe(section);
 
@@ -1050,7 +1053,7 @@ function setupStoryBottleSection() {
     canvas.width = cachedCw * dpr;
     canvas.height = cachedCh * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // Reset transform and apply scaling cleanly without accumulation
-    drawFrame(0);
+    drawFrame(lastDrawnFrameIndex);
   }
 
   // Draw specific frame on canvas (uses cached dimensions to avoid layout thrashing)
@@ -1073,13 +1076,12 @@ function setupStoryBottleSection() {
     }
   }
 
-  // Preload frames (compressed/optimized count for mobile)
+  // Preload ultra-fast 24 WebP bottle frames (totaling under 160KB!)
   function preloadFrames() {
     for (let i = 0; i < totalFrames; i++) {
       const img = new Image();
-      const actualFrameIndex = i * frameStep;
-      const frameNum = String(actualFrameIndex).padStart(3, '0');
-      img.src = `assets/frames/frame_${frameNum}.png?v=30`;
+      const frameNum = String(i + 1).padStart(2, '0');
+      img.src = `assets/images/video_frames/bottle_frame_${frameNum}.webp`;
       img.onload = () => {
         loadedCount++;
         if (i === 0) {
@@ -1122,7 +1124,7 @@ function setupStoryBottleSection() {
 
       const progress = self.progress;
 
-      // 1. Rotate the 360° bottle on canvas (looping the loaded frames)
+      // 1. Rotate the 360° bottle on canvas (looping the loaded 24 frames)
       const frameIndex = Math.min(totalFrames - 1, Math.floor(progress * totalFrames));
       drawFrame(frameIndex);
 
