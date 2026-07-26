@@ -337,6 +337,9 @@ function setupHeroLiquid() {
   });
   resizeObserver.observe(container);
 
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 768);
+  let autoOrbitAngle = 0;
+
   // IntersectionObserver to pause RAF loop when hero section is not visible in viewport
   const heroIO = new IntersectionObserver((entries) => {
     isHeroVisible = entries[0].isIntersecting;
@@ -359,8 +362,16 @@ function setupHeroLiquid() {
       isLoopRunning = false;
       return;
     }
+
+    // On mobile touchscreens or when cursor is idle, run a gentle ambient orbital spotlight reveal
+    if (!mouse.active || isTouchDevice) {
+      autoOrbitAngle += 0.015;
+      mouse.x = (W / 2) + Math.cos(autoOrbitAngle) * (W * 0.28);
+      mouse.y = (H / 2) + Math.sin(autoOrbitAngle * 1.5) * (H * 0.22);
+    }
+
     const isRevealing = drawFrame(now);
-    if (mouse.active || isRevealing) {
+    if (mouse.active || isTouchDevice || isRevealing) {
       rafId = requestAnimationFrame(loop);
     } else {
       isLoopRunning = false;
