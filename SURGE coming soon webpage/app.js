@@ -204,7 +204,7 @@ function setupHeroLiquid() {
   img.onload = () => {
     computeFit();
   };
-  img.src = "assets/images/IMG_4020.webp";
+  img.src = "assets/images/hero_mobile_lineup.webp";
 
   let W = 1;
   let H = 1;

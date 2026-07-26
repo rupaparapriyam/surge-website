@@ -1843,41 +1843,6 @@ body.light-theme .cs-input-group input { background: #ffffff; }
   display: flex;
 }
 
-  .cs-canvas-sticky-wrap {
-    width: 44% !important;
-    height: 185px !important;
-    position: sticky !important;
-    top: 30% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    margin: 0 !important;
-    overflow: visible !important;
-    order: 1 !important;
-    z-index: 10 !important;
-  }
-  .constellation-overlay {
-    position: absolute !important;
-    left: -25px !important;
-    right: auto !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 185px !important;
-    height: 185px !important;
-  }
-  .constellation-center-hub {
-    width: 185px !important;
-    height: 185px !important;
-    border-width: 3.5px !important;
-    background: rgba(10, 10, 10, 0.9) !important;
-    box-shadow: 0 0 30px rgba(212,175,55,0.5) !important;
-  }
-  .constellation-svg, .constellation-node {
-    display: none !important;
-  }
   /* Remove blur & style mobile Inaugural Product Lineup as horizontal swipable row */
   .cs-product-grid, #product-grid {
     display: flex !important;
