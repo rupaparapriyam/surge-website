@@ -156,13 +156,13 @@ body.light-theme .splash-subtitle {
 }
 
 @keyframes logoCinematicRevealDark {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale3d(1.06, 1.06, 1); filter: blur(8px) contrast(1); }
-  100% { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); filter: blur(0px) contrast(1); }
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale3d(1.06, 1.06, 1); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
 }
 
 @keyframes logoCinematicRevealLight {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale3d(1.06, 1.06, 1); filter: blur(8px) contrast(1.5); }
-  100% { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); filter: blur(0px) contrast(1.5); }
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale3d(1.06, 1.06, 1); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
 }
 
 @keyframes subtitleReveal {

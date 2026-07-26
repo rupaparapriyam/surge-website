@@ -6,10 +6,10 @@
   <title>SURGE Grooming &bull; Launching Soon</title>
   <meta name="description" content="The New Standard in Men's Grooming. Uncompromised hold. Launching soon.">
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts Optimization (Pruned to exact weights used with display=swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Rozha+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Rajdhani:wght@700&family=Rozha+One&display=swap" rel="stylesheet">
 
   <!-- Core Libraries CDNs (Lenis, GSAP, ScrollTrigger, Anime.js) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
@@ -19,7 +19,7 @@
 
   <!-- LCP Image Preload Hint -->
   <link rel="preload" as="image" href="assets/images/logo.webp" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=114">
+  <link rel="stylesheet" href="style.min.css?v=115">
 </head>
 <body class="dark-theme">
 
@@ -27,7 +27,7 @@
   <div id="splash-screen" class="splash-screen">
     <div class="splash-ambient-glow"></div>
     <div class="splash-content">
-      <img src="assets/images/logo.webp" alt="SURGE Logo" class="splash-logo" id="splash-logo" fetchpriority="high" decoding="sync">
+      <img src="assets/images/logo.webp" alt="SURGE Logo" class="splash-logo" id="splash-logo" width="280" height="114" fetchpriority="high" decoding="sync">
       <div class="splash-subtitle" id="splash-subtitle">MEN'S GROOMING</div>
     </div>
   </div>
@@ -36,7 +36,7 @@
   <header class="cs-header">
     <div class="cs-header-container">
       <div class="cs-brand-wrap">
-        <img src="assets/images/logo.webp" alt="SURGE Grooming" class="cs-logo" fetchpriority="high" decoding="sync">
+        <img src="assets/images/logo.webp" alt="SURGE Grooming" class="cs-logo" width="140" height="57" fetchpriority="high" decoding="sync">
       </div>
       <div class="cs-header-actions">
         <a href="#vip-signup" class="cs-vip-btn">Get Waitlist Access</a>
@@ -232,31 +232,31 @@
         <!-- 7 clickable circular product nodes that rotate and shuffle -->
         <div class="constellation-nodes-container" id="constellation-nodes">
           <div class="constellation-node active" data-index="1" style="--angle: 0deg;">
-            <img src="assets/images/sea_salt_spray.webp" alt="Sea Salt Spray" loading="lazy" decoding="async">
+            <img src="assets/images/sea_salt_spray.webp" alt="Sea Salt Spray" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Sea Salt Spray</span>
           </div>
           <div class="constellation-node" data-index="2" style="--angle: 51.4deg;">
-            <img src="assets/images/texture_powder.webp" alt="Texture Powder" loading="lazy" decoding="async">
+            <img src="assets/images/texture_powder.webp" alt="Texture Powder" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Texture Powder</span>
           </div>
           <div class="constellation-node" data-index="3" style="--angle: 102.8deg;">
-            <img src="assets/images/pomade.webp" alt="Pomade" loading="lazy" decoding="async">
+            <img src="assets/images/pomade.webp" alt="Pomade" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Pomade</span>
           </div>
           <div class="constellation-node" data-index="4" style="--angle: 154.2deg;">
-            <img src="assets/images/hair_clay.webp" alt="Clay" loading="lazy" decoding="async">
+            <img src="assets/images/hair_clay.webp" alt="Clay" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Clay</span>
           </div>
           <div class="constellation-node" data-index="5" style="--angle: 205.6deg;">
-            <img src="assets/images/styling_mousse.webp" alt="Mousse" loading="lazy" decoding="async">
+            <img src="assets/images/styling_mousse.webp" alt="Mousse" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Styling Mousse</span>
           </div>
           <div class="constellation-node" data-index="6" style="--angle: 257deg;">
-            <img src="assets/images/leave_in_conditioner.webp" alt="Leave-in" loading="lazy" decoding="async">
+            <img src="assets/images/leave_in_conditioner.webp" alt="Leave-in" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Leave-in Conditioner</span>
           </div>
           <div class="constellation-node" data-index="7" style="--angle: 308.6deg;">
-            <img src="assets/images/hairstyling_oil.webp" alt="Hair Oil" loading="lazy" decoding="async">
+            <img src="assets/images/hairstyling_oil.webp" alt="Hair Oil" width="80" height="80" loading="lazy" decoding="async">
             <span class="node-tooltip">Hair Oil</span>
           </div>
         </div>
@@ -267,7 +267,7 @@
             <circle class="hub-progress-bg" cx="50" cy="50" r="47" />
             <circle class="hub-progress-ring" id="hub-progress-ring" cx="50" cy="50" r="47" />
           </svg>
-          <img id="constellation-center-img" src="assets/images/sea_salt_spray.webp" alt="Active Product" loading="lazy" decoding="async">
+          <img id="constellation-center-img" src="assets/images/sea_salt_spray.webp" alt="Active Product" width="300" height="300" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -406,7 +406,7 @@
         <!-- Column 1: Brand Mission & Socials -->
         <div class="footer-col brand-col">
           <a href="#" class="footer-logo-link">
-            <img src="assets/images/logo.webp" alt="SURGE Logo" class="footer-brand-logo">
+            <img src="assets/images/logo.webp" alt="SURGE Logo" class="footer-brand-logo" width="200" height="81" loading="lazy">
           </a>
           <div class="footer-tagline-devanagari">तेजस् &bull; शौर्य &bull; ओजस्</div>
           <p class="footer-about">High-end, performance-driven grooming products designed for men who demand better. Uncompromising hold, premium formulations.</p>
@@ -606,6 +606,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=114" defer></script>
+  <script src="app.min.js?v=115" defer></script>
 </body>
 </html>
