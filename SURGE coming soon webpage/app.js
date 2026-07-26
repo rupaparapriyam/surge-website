@@ -478,8 +478,8 @@ function initLenisScroll() {
             const activeProduct = PRODUCTS_PREVIEW[index];
             if (activeProduct) {
               const centerImg = document.getElementById("constellation-center-img");
-              if (centerImg && centerImg.src !== activeProduct.image) {
-                centerImg.src = activeProduct.image;
+              if (centerImg && centerImg.getAttribute("src") !== activeProduct.image) {
+                centerImg.setAttribute("src", activeProduct.image);
               }
             }
             if (progressRing) {
@@ -622,15 +622,12 @@ function updateConstellationNodes(progress) {
       // Calculate smooth breathing zoom (scale ranges between 1.0 and 1.2)
       const zoomScale = 1.0 + Math.sin(stepProgress * Math.PI) * 0.2;
       
-      // Calculate smooth cross-fade opacity (ranges from 0.4 to 1.0)
-      const opacityVal = 0.4 + Math.sin(stepProgress * Math.PI) * 0.6;
-      
-      // Apply styles dynamically for responsive zoom transitions
+      // Apply styles dynamically for responsive zoom transitions (always 100% opaque)
       centerImg.style.transform = `scale(${zoomScale})`;
-      centerImg.style.opacity = opacityVal;
+      centerImg.style.opacity = "1";
 
       if (centerImg.getAttribute("src") !== activeProduct.image) {
-        centerImg.src = activeProduct.image;
+        centerImg.setAttribute("src", activeProduct.image);
       }
     }
   }
