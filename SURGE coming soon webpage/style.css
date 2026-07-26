@@ -280,13 +280,10 @@ body.dark-theme .cs-logo {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Clean straight border line */
 }
 
-/* Content-Visibility Optimization for Off-Screen Sections (Slashing Style Recalculations & Image Decodes) */
+/* Immediate section rendering for instant image loading on all devices */
 .cs-founder-section,
-.cs-story-section,
-.cs-product-lineup-section,
 .cs-vip-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 600px;
+  contain: layout style;
 }
 
 #hero-liquid-canvas {
@@ -547,10 +544,8 @@ body.dark-theme .cs-logo {
   height: 300px;
   border-radius: 50%;
   border: 2.5px solid var(--color-accent);
-  background: rgba(18, 18, 18, 0.7);
-  backdrop-filter: saturate(180%) blur(16px);
-  -webkit-backdrop-filter: saturate(180%) blur(16px);
-  box-shadow: 0 0 35px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.1);
+  background: radial-gradient(circle at center, rgba(60, 60, 60, 0.9) 0%, rgba(15, 15, 15, 0.98) 100%);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.15);
   overflow: hidden;
   z-index: 6;
   pointer-events: auto;
@@ -1137,15 +1132,16 @@ body.dark-theme .cs-logo {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   
-  /* Initial state before cell-division completes */
-  opacity: 0;
-  filter: blur(15px);
-  pointer-events: none;
+  /* Always 100% crisp and visible on all devices */
+  opacity: 1;
+  filter: none;
+  pointer-events: auto;
 }
 
 .cs-prod-card:hover {
   transform: translateY(-6px);
   border-color: var(--color-accent);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
 }
 
 .cs-prod-img-wrap {
@@ -1153,7 +1149,8 @@ body.dark-theme .cs-logo {
   height: 240px;
   overflow: hidden;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.4);
+  background: radial-gradient(circle at center, rgba(50, 50, 50, 0.8) 0%, rgba(15, 15, 15, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;

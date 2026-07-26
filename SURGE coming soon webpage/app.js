@@ -658,7 +658,7 @@ function renderProductsProgressive() {
     card.className = "cs-prod-card";
     card.innerHTML = `
       <div class="cs-prod-img-wrap">
-        <img src="${p.image}?v=18" alt="${p.name}" class="cs-prod-img">
+        <img src="${p.image}" alt="${p.name}" class="cs-prod-img" loading="eager" decoding="async">
         <div class="cs-ios-popover" onclick="openNotifyModal('${p.name}')">
           <span>Remind Me</span> &rarr;
         </div>
