@@ -75,12 +75,6 @@ const PRODUCTS_PREVIEW = [
   }
 ];
 
-// Preload all product WebP images into browser memory immediately on startup
-PRODUCTS_PREVIEW.forEach(p => {
-  const img = new Image();
-  img.src = p.image;
-});
-
 // Lenis smooth scroll instance
 let lenis = null;
 
@@ -204,7 +198,7 @@ function setupHeroLiquid() {
   img.onload = () => {
     computeFit();
   };
-  img.src = "assets/images/hero_mobile_lineup.webp";
+  img.src = "assets/images/shampoo.webp";
 
   let W = 1;
   let H = 1;
@@ -344,10 +338,7 @@ function setupHeroLiquid() {
   resizeObserver.observe(container);
 
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 768);
-  if (isTouchDevice) {
-    // On mobile, render static hero background image with black glass overlay
-    return;
-  }
+  let autoOrbitAngle = 0;
 
   // IntersectionObserver to pause RAF loop when hero section is not visible in viewport
   const heroIO = new IntersectionObserver((entries) => {
@@ -372,8 +363,15 @@ function setupHeroLiquid() {
       return;
     }
 
+    // On mobile touchscreens or when cursor is idle, run a gentle ambient orbital spotlight reveal
+    if (!mouse.active || isTouchDevice) {
+      autoOrbitAngle += 0.015;
+      mouse.x = (W / 2) + Math.cos(autoOrbitAngle) * (W * 0.28);
+      mouse.y = (H / 2) + Math.sin(autoOrbitAngle * 1.5) * (H * 0.22);
+    }
+
     const isRevealing = drawFrame(now);
-    if (mouse.active || isRevealing) {
+    if (mouse.active || isTouchDevice || isRevealing) {
       rafId = requestAnimationFrame(loop);
     } else {
       isLoopRunning = false;
@@ -475,22 +473,8 @@ function initLenisScroll() {
 
           // Focus window & photo sync in middle range (p from 0.25 to 0.75)
           if (p > 0.25 && p < 0.75) {
-            cards.forEach((c, i) => {
-              if (i === index) c.classList.add("active-card");
-              else c.classList.remove("active-card");
-            });
-
-            // Highlight corresponding orbit node on left
-            const nodes = document.querySelectorAll(".constellation-node");
-            nodes.forEach(n => {
-              const nIdx = parseInt(n.getAttribute("data-index"));
-              if (nIdx === index + 1) {
-                n.classList.add("active");
-              } else {
-                n.classList.remove("active");
-              }
-            });
-
+            cards.forEach(c => c.classList.remove("active-card"));
+            card.classList.add("active-card");
             const activeProduct = PRODUCTS_PREVIEW[index];
             if (activeProduct) {
               const centerImg = document.getElementById("constellation-center-img");
@@ -1027,7 +1011,7 @@ function setupStoryBottleSection() {
 
   const isMobile = window.innerWidth < 768;
   const frameStep = 1; // Preload all frames on all devices
-  const totalFrames = 24;
+  const totalFrames = 240;
   const loadedFrames = [];
   let loadedCount = 0;
   let lastDrawnFrameIndex = 0; // Cache to prevent canvas flicker
@@ -1038,9 +1022,6 @@ function setupStoryBottleSection() {
   // IntersectionObserver to pause rendering when story bottle section is not visible in viewport
   const storyIO = new IntersectionObserver((entries) => {
     isStoryVisible = entries[0].isIntersecting;
-    if (isStoryVisible) {
-      drawFrame(lastDrawnFrameIndex);
-    }
   }, { threshold: 0.05 });
   storyIO.observe(section);
 
@@ -1053,7 +1034,7 @@ function setupStoryBottleSection() {
     canvas.width = cachedCw * dpr;
     canvas.height = cachedCh * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // Reset transform and apply scaling cleanly without accumulation
-    drawFrame(lastDrawnFrameIndex);
+    drawFrame(0);
   }
 
   // Draw specific frame on canvas (uses cached dimensions to avoid layout thrashing)
@@ -1076,12 +1057,13 @@ function setupStoryBottleSection() {
     }
   }
 
-  // Preload ultra-fast 24 WebP bottle frames (totaling under 160KB!)
+  // Preload frames (compressed/optimized count for mobile)
   function preloadFrames() {
     for (let i = 0; i < totalFrames; i++) {
       const img = new Image();
-      const frameNum = String(i + 1).padStart(2, '0');
-      img.src = `assets/images/video_frames/bottle_frame_${frameNum}.webp`;
+      const actualFrameIndex = i * frameStep;
+      const frameNum = String(actualFrameIndex).padStart(3, '0');
+      img.src = `assets/frames/frame_${frameNum}.png?v=30`;
       img.onload = () => {
         loadedCount++;
         if (i === 0) {
@@ -1124,7 +1106,7 @@ function setupStoryBottleSection() {
 
       const progress = self.progress;
 
-      // 1. Rotate the 360° bottle on canvas (looping the loaded 24 frames)
+      // 1. Rotate the 360° bottle on canvas (looping the loaded frames)
       const frameIndex = Math.min(totalFrames - 1, Math.floor(progress * totalFrames));
       drawFrame(frameIndex);
 
