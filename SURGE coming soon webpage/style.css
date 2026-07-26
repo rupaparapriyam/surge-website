@@ -297,7 +297,12 @@ body.dark-theme .cs-logo {
 
 .cs-hero-intro-container {
   max-width: 850px;
+  width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   position: relative;
   z-index: 2; /* Layer content above canvas dots */
   pointer-events: none; /* Let pointer events pass to canvas dots */
@@ -653,6 +658,7 @@ body.dark-theme .cs-logo {
   margin-top: 30px;
   border-top: 1px solid var(--color-border);
   padding-top: 20px;
+  margin-bottom: 28px; /* Clean spacing separation before CTA button */
 }
 
 .cs-founder-sig strong {
@@ -660,11 +666,14 @@ body.dark-theme .cs-logo {
   font-size: 1.1rem;
   color: var(--color-accent);
   letter-spacing: 0.1em;
+  margin-bottom: 4px;
 }
 
 .cs-founder-sig span {
+  display: block;
   font-size: 0.85rem;
   color: var(--color-muted);
+  margin-bottom: 16px;
 }
 
 /* Sections */
@@ -755,9 +764,7 @@ body.dark-theme .cs-logo {
   box-shadow: 0 20px 50px rgba(255, 255, 255, 0.15);
 }
 
-.story-pattern-a { background-image: url('assets/images/pattern_a.svg?v=18'); }
-.story-pattern-b { background-image: url('assets/images/pattern_b.svg?v=18'); }
-.story-pattern-c { background-image: url('assets/images/pattern_c.svg?v=18'); }
+.story-pattern-a, .story-pattern-b, .story-pattern-c { background-image: none !important; }
 
 .cs-chapter {
   font-size: 0.75rem;
