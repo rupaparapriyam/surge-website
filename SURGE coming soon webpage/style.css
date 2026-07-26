@@ -1655,7 +1655,7 @@ body.light-theme .cs-input-group input { background: #ffffff; }
   /* Mobile Hero Static Background & Black Glass Overlay */
   #hero-liquid-canvas { display: none !important; }
   .cs-hero-intro {
-    background: url('assets/images/IMG_4020.webp') center center / cover no-repeat !important;
+    background: url('assets/images/hero_mobile_lineup.webp') center center / cover no-repeat !important;
     padding: 120px 20px 60px 20px !important;
     min-height: 80vh !important;
   }
