@@ -75,6 +75,12 @@ const PRODUCTS_PREVIEW = [
   }
 ];
 
+// Preload all product WebP images into browser memory immediately on startup
+PRODUCTS_PREVIEW.forEach(p => {
+  const img = new Image();
+  img.src = p.image;
+});
+
 // Lenis smooth scroll instance
 let lenis = null;
 
@@ -338,7 +344,10 @@ function setupHeroLiquid() {
   resizeObserver.observe(container);
 
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 768);
-  let autoOrbitAngle = 0;
+  if (isTouchDevice) {
+    // On mobile, render static hero background image with black glass overlay
+    return;
+  }
 
   // IntersectionObserver to pause RAF loop when hero section is not visible in viewport
   const heroIO = new IntersectionObserver((entries) => {
@@ -363,15 +372,8 @@ function setupHeroLiquid() {
       return;
     }
 
-    // On mobile touchscreens or when cursor is idle, run a gentle ambient orbital spotlight reveal
-    if (!mouse.active || isTouchDevice) {
-      autoOrbitAngle += 0.015;
-      mouse.x = (W / 2) + Math.cos(autoOrbitAngle) * (W * 0.28);
-      mouse.y = (H / 2) + Math.sin(autoOrbitAngle * 1.5) * (H * 0.22);
-    }
-
     const isRevealing = drawFrame(now);
-    if (mouse.active || isTouchDevice || isRevealing) {
+    if (mouse.active || isRevealing) {
       rafId = requestAnimationFrame(loop);
     } else {
       isLoopRunning = false;
@@ -473,8 +475,22 @@ function initLenisScroll() {
 
           // Focus window & photo sync in middle range (p from 0.25 to 0.75)
           if (p > 0.25 && p < 0.75) {
-            cards.forEach(c => c.classList.remove("active-card"));
-            card.classList.add("active-card");
+            cards.forEach((c, i) => {
+              if (i === index) c.classList.add("active-card");
+              else c.classList.remove("active-card");
+            });
+
+            // Highlight corresponding orbit node on left
+            const nodes = document.querySelectorAll(".constellation-node");
+            nodes.forEach(n => {
+              const nIdx = parseInt(n.getAttribute("data-index"));
+              if (nIdx === index + 1) {
+                n.classList.add("active");
+              } else {
+                n.classList.remove("active");
+              }
+            });
+
             const activeProduct = PRODUCTS_PREVIEW[index];
             if (activeProduct) {
               const centerImg = document.getElementById("constellation-center-img");
